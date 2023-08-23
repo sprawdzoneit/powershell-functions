@@ -1,4 +1,4 @@
-#Get-LastBootInfo PowerShell function
+#Get-LastBootInfo
 #
 #The function checks when the OS was started, collecting information about the reason for booting from the event log
 #
@@ -59,8 +59,6 @@ process{
                                         {
                                             if (Test-Connection -ComputerName $Computer -Count 1 -ErrorAction SilentlyContinue) {
                                                                                                 Invoke-Command -ComputerName $Computer -ScriptBlock {
-                                                                                                    #get hostname
-                                                                                                    $hostn = hostname
 
                                                                                                     #get last boot time
                                                                                                     $boot = (Get-ComputerInfo).OsLastBootUpTime
@@ -70,9 +68,13 @@ process{
                                                                                                     Description:
 
                                                                                                     1074 System has been shutdown by a process/user
+
                                                                                                     6005 The Event log service was started
+
                                                                                                     6006 The Event log service was stopped
+
                                                                                                     6008 The previous system shutdown at time on date was unexpected
+
                                                                                                     6013 The system uptime is number seconds
 
                                                                                                     Event ID 1704 documents shut down events. 
@@ -83,7 +85,7 @@ process{
                                                                                                     #>
                                                                                                     $why = (Get-WinEvent -FilterHashtable @{logname = 'System'; id = 1074,6005,6006,6008} -MaxEvents 1).Message
 
-                                                                                                    Write-Host "For $hostn last boot time is $boot with last log entry: $why"
+                                                                                                    Write-Host "For $ComputerName last boot time is $boot with last log entry: $why"
                                                                                                                                                                                                     
                                                                                                                                                     }
                                                                                                                                             }
