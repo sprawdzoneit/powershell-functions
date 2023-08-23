@@ -85,7 +85,7 @@ process{
                                                                                                     #>
                                                                                                     $why = (Get-WinEvent -FilterHashtable @{logname = 'System'; id = 1074,6005,6006,6008} -MaxEvents 1).Message
 
-                                                                                                    Write-Host "For $ComputerName last boot time is $boot with last log entry: $why"
+                                                                                                    Write-Host "For $env:COMPUTERNAME last boot time is $boot with last log entry: $why"
                                                                                                                                                                                                     
                                                                                                                                                     }
                                                                                                                                             }
