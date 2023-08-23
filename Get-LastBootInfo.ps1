@@ -70,13 +70,9 @@ process{
                                                                                                     Description:
 
                                                                                                     1074 System has been shutdown by a process/user
-
                                                                                                     6005 The Event log service was started
-
                                                                                                     6006 The Event log service was stopped
-
                                                                                                     6008 The previous system shutdown at time on date was unexpected
-
                                                                                                     6013 The system uptime is number seconds
 
                                                                                                     Event ID 1704 documents shut down events. 
